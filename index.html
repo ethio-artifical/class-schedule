@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class Schedule | Statistics and Data Science</title>
+  <meta name="description" content="Class schedule for the Department of Statistics and Data Science, Bahir Dar University, 2019 E.C. Semester I.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <p class="eyebrow">Bahir Dar University &middot; Science College</p>
+      <h1>Statistics &amp; Data Science<br><span>Class Schedule</span></h1>
+      <p class="sub">2019 E.C. &middot; Semester I &middot; Regular Undergraduate Program</p>
+      <ul class="stats" id="heroStats" aria-label="Summary"></ul>
+    </div>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch light or dark theme" title="Switch theme">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- TIMETABLE REPORT -->
+  <section class="card" id="report" aria-labelledby="reportTitle">
+    <div class="card-head">
+      <div>
+        <h2 id="reportTitle">Timetable report</h2>
+        <p class="muted" id="reportSub"></p>
+      </div>
+      <div class="actions">
+        <button class="btn btn-red" type="button" id="pdfBtn">Export PDF</button>
+        <button class="btn btn-gold" type="button" id="csvBtn">Download CSV</button>
+        <button class="btn btn-ghost" type="button" id="linkBtn">Copy link</button>
+      </div>
+    </div>
+
+    <div class="filters">
+      <label>Student group
+        <select id="groupSel"></select>
+      </label>
+      <label>Teacher
+        <select id="teacherSel"></select>
+      </label>
+      <label>Day
+        <select id="daySel"></select>
+      </label>
+      <button class="btn btn-ghost" type="button" id="resetBtn">Reset</button>
+    </div>
+
+    <div class="tt-scroll"><div id="grid"></div></div>
+
+    <div class="legend">
+      <span><i class="sw"></i>Lecture or tutorial</span>
+      <span><i class="sw lab"></i>Computer lab (starred in the PDF)</span>
+      <span class="muted">Periods 1 to 4 run before the break, 5 to 8 after it. Times are local.</span>
+    </div>
+
+    <h3 class="sec">Courses</h3>
+    <div id="courses"></div>
+  </section>
+
+  <div class="two-col">
+
+    <!-- FREE TIME SLOT -->
+    <section class="card" id="free" aria-labelledby="freeTitle">
+      <h2 id="freeTitle">Free time slot</h2>
+      <p class="muted">Find when a student group, a teacher or a room has nothing scheduled.</p>
+      <div class="tabs" role="tablist" id="freeTabs">
+        <button role="tab" class="tab on" data-type="student" type="button">Student</button>
+        <button role="tab" class="tab" data-type="teacher" type="button">Teacher</button>
+        <button role="tab" class="tab" data-type="room" type="button">Room</button>
+      </div>
+      <label class="free-pick">
+        <span id="freeLabel">Student group</span>
+        <select id="freeSel"></select>
+      </label>
+      <p class="free-count" id="freeCount" aria-live="polite"></p>
+      <div class="tt-scroll"><div id="freeGrid"></div></div>
+    </section>
+
+    <!-- CALENDAR -->
+    <section class="card" id="calendar" aria-labelledby="calTitle">
+      <h2 id="calTitle">Academic calendar</h2>
+      <div class="cal">
+        <div class="cal-bar">
+          <button class="icon-btn sm" id="prevM" type="button" aria-label="Previous month">&larr;</button>
+          <strong id="monthLabel"></strong>
+          <button class="icon-btn sm" id="nextM" type="button" aria-label="Next month">&rarr;</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <button class="btn btn-ghost small" id="todayBtn" type="button">Jump to today</button>
+      </div>
+      <div class="day-panel" id="dayPanel" aria-live="polite"></div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="wrap foot">
+  <p>Department of Statistics and Data Science &middot; Bahir Dar University. Based on the tentative class schedule for 2019 AY, 1st semester.</p>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
